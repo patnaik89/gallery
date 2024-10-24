@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Edit Photo !</title>
+  </head>
+  <body>
+    
+    <main>
+        <div class="wrapper">
+            <div class="container">
+                <div style="margin-top: 3em;">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <ul class="list-group">
+                                <a class="list-group-item text-dark text-decoration-none" href="{% url 'home' %}">Home</a>
+                                <a class="list-group-item active text-white text-decoration-none" aria-current="true" href="{% url 'image_list' %}">List</a>
+                                <a class="list-group-item text-dark text-decoration-none" href="{% url 'gallery' %}">Gallery</a>
+                              </ul>
+                        </div>
+                        <div class="col-md-9 mt-3 mt-md-0">
+                            <div class="border p-3" style="padding-bottom: 4em !important;">
+                                <div class="mt-2">
+                                    {% include 'partials/message.html' %}
+                                    <form action="" method="POST" autocomplete="off" enctype="multipart/form-data">
+                                        {% csrf_token %}
+
+                                           
+                                            <div class="mb-3 row">
+                                                <label for="title" class="col-sm-2 col-form-label">Title</label>
+                                                <div class="col-sm-10">
+                                                <input type="text" name="title" class="form-control" 
+                                                {% if 'title' in rvalues and rvalues.title == '' %}
+                                                value=""
+                                                {% else %}
+                                                value="{% if rvalues.title %}{{rvalues.title}}{% else %}{{photo.title}}{% endif %}" 
+                                                {% endif %}
+                                                id="title">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3 row">
+                                                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                                                <div class="col-sm-10">
+                                                <input type="text" name="description" class="form-control" 
+                                                {% if 'description' in rvalues and rvalues.description == '' %}
+                                                value=""
+                                                {% else %}
+                                                value="{% if rvalues.description %}{{rvalues.description}}{% else %}{{photo.description}}{% endif %}"
+                                                {% endif %}
+                                                id="description">
+                                                </div>
+                                            </div>
+                                            <div class="mb-3  mt-4 row">
+                                                <div class="col-sm-10 offset-2">
+                                                    <span class="text-sm text-muted">Current: {{photo.image}}</span>
+                                                </div>
+                                                <label for="image" class="col-sm-2 col-form-label">Image</label>
+                                                <div class="col-sm-10">
+                                                <input type="file" name="image" accept="*/jpeg" class="form-control" id="image">
+                                                </div>
+                                            </div>
+                                            <div class="col-auto mb-3 mt-3" style="float: right">
+                                                <button type="submit" class="btn btn-warning mb-3">Edit</button>
+                                            </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    
+
+     <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script>
+    </script>
+
+  </body>
+</html>
+
+<script>
+
+   
+
+</script>
